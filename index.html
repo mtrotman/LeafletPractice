@@ -35,6 +35,19 @@
     L.geoJson(data).addTo(map);
   });
 
+	  // load GeoJSON from an external file
+  $.getJSON("Fishing.geojson",function(data){
+    //Add fish icon 
+	var fishIcon = L.icon({
+    iconUrl: 'Fishing.png',
+    iconSize: [50,40]
+  }); 
+  L.geoJson(data  ,{
+    pointToLayer: function(feature,latlng){
+	  return L.marker(latlng,{icon: fishIcon});
+    }
+  }  ).addTo(map);
+});
   </script>
 </body>
 </html>
